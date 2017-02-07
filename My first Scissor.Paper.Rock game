@@ -1,0 +1,31 @@
+import random
+def scissor_paper_rock():
+  print( "WELCOME TO SCISSOR/PAPER/ROCK game \n\n")
+  ran_generator= random.sample(['scissor','paper','rock'],1)
+  ran_generator= "".join(ran_generator)
+  a=input("Enter scissor/ paper / rock: ")
+  
+  if a=='scissor':
+    if ran_generator=='scissor':
+      print ('Play again')
+    elif ran_generator=='paper':
+      print("Scissor cuts paper. You win!! ")
+    else:
+      print("Rock smashes scissor. You lose! ")
+      
+  elif a=='paper':
+    if ran_generator=='scissor':
+      print ('Scissor cuts paper. You lose!')
+    elif ran_generator=='paper':
+      print("Play again ")
+    else:
+      print("Paper wraps up the rock. You win! ")
+      
+  elif a=='rock':
+    if ran_generator=='scissor':
+      print ('Rock smashes scissor. You win! ')
+    elif ran_generator=='paper':
+      print("Paper wraps up the rock. You lose!!")
+    else:
+      print("Play again ")
+scissor_paper_rock()
