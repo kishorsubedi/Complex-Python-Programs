@@ -1,0 +1,16 @@
+x= 20
+low = 0
+high = x 
+epsilon = 1
+numguesses = 0
+ans= (low + high) / 2.0
+while abs( ans **3 - x) >= epsilon and ans<=x:
+  numguesses += 1 
+  if ans**3 < x :
+    low = ans 
+  else:
+    high = ans
+  ans = (low+ high)/ 2.0
+  
+print(numguesses) #7
+print(ans) #2.734375
