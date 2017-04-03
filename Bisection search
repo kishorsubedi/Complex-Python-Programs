@@ -1,16 +1,13 @@
-x= 20
-low = 0
-high = x 
-epsilon = 1
-numguesses = 0
-ans= (low + high) / 2.0
-while abs( ans **3 - x) >= epsilon and ans<=x:
-  numguesses += 1 
-  if ans**3 < x :
-    low = ans 
-  else:
-    high = ans
-  ans = (low+ high)/ 2.0
-  
-print(numguesses) #7
-print(ans) #2.734375
+def root(x, power, epsilon):
+    low = 0
+    high = x
+    ans = (low+high)/2.0
+    while ( abs(ans ** power - x) >= epsilon):
+        if ( ans**power > x):
+            high = ans 
+        else:
+            low = ans 
+        ans = (low+high)/2.0 
+    return ans
+
+print(root(27,3,0.1))
