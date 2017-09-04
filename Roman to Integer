@@ -1,0 +1,32 @@
+class Solution(object):
+    def value(self,char):
+      if char=='I':
+        return 1
+      elif char =='V':
+        return 5 
+      elif char =='X':
+        return 10 
+      elif char =='L':
+        return 50
+      elif char == 'C':
+        return 100
+      elif char =='D':
+        return 500
+      else:
+        return 1000
+    
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        total = 0 
+        i = 0
+        while(i < len(s)-1):
+            if self.value(s[i]) >= self.value(s[i+1]):
+                total += self.value(s[i])
+            else:
+                total -= self.value(s[i])
+            i += 1 
+        total += self.value(s[i])
+        return total 
