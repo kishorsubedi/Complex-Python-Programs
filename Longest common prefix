@@ -1,0 +1,31 @@
+class Solution(object):
+    def new_string_former(self,str):
+        min = str[0]
+        for i in str:
+            if len(i) <= len(min):
+                min = i 
+        return min
+    
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        commonstring=""
+        if len(strs) ==0:
+            return commonstring
+
+        min = self.new_string_former(strs)
+  
+        strs.remove(min)
+  
+        for i in range(len(min)):
+            for each_item in strs:
+                if each_item[i] != min[i]:
+                    return commonstring
+            commonstring += each_item[i]
+        return commonstring 
+
+a= Solution()
+b=a. longestCommonPrefix(["geeks", "gee", "geek"])
+print(b)
