@@ -1,0 +1,17 @@
+def function(number):
+  count = 0
+  
+  
+  while(number != 0):
+    factors = []
+    for i in range(2,number):
+      if number % i == 0:
+        another = number // i 
+        factors. append( max(i,another) )
+    
+    number = number - 1 if factors == [] else min(factors) 
+    count +=1
+  
+  return count
+  
+print(function(3))
