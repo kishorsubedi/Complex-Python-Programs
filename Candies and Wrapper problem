@@ -1,0 +1,23 @@
+def  maximumCupcakes(trips):
+  
+    finalcontainer = []
+    for trip in trips: #trip = "6 2 2"
+        total_candies = 0
+        trip = trip.split(" ") #trip = [6,2,2]
+
+        normal_candy = int(trip[0]) // int(trip[1]) #3
+        total_candies += normal_candy 
+
+        while ( normal_candy // int(trip[2]) > 0):
+
+            total_candies += normal_candy // int(trip[2]) #total_candies= 4
+
+            remaining_candy = normal_candy % int(trip[2]) #remaining_candy = 1
+            normal_candy = normal_candy // int(trip[2]) #new normal candy = exchanged candies
+            normal_candy += remaining_candy #new normal candy = exchanged candies + remaining candies if any
+
+    
+        finalcontainer.append(total_candies)
+  
+    for candies_number in finalcontainer:
+        print(candies_number)
