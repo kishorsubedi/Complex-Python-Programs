@@ -1,0 +1,33 @@
+def function(l,s ):
+
+  r = l % s 
+  while (r != 0):
+    hold = l 
+    l = s
+    s = hold %s 
+    r = l% s 
+  return s 
+  
+ function(210, 45)
+ 
+ 
+ 
+ //Using recursion
+
+def function(l,s): #210 45 
+  if (l %s == 0):
+   return (s)
+  else:
+    function (s, l%s)
+
+print( function(210, 45) ) //returns None, because the outside stack mainframe is not dismissed
+
+
+// Correct way 
+def function(l,s): #210 45 
+  if (l %s == 0):
+   return (s)
+  else:
+    return function (s, l%s)
+
+print( function(210, 45) ) 
