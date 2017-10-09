@@ -1,0 +1,24 @@
+class Solution(object):
+  
+    stack = []
+    dict = {")": "(", "}": "{", "]": "["}
+
+    def pop(self):
+        a = self.stack[-1]
+        self.stack.remove(a)
+        return a 
+    
+    def isValid(self,s):
+    
+        for char in s:
+            if char in self.dict.values():
+                self.stack.append(char)
+      
+            else: #char = )
+      
+                if (self.stack == [] or self.stack.pop() != self.dict[char] ) :
+                    return False
+        return self.stack == []
+
+apo = Solution()
+print (apo.isValid("]") )
