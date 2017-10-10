@@ -1,0 +1,42 @@
+class stack:
+  def __init__(self):
+    self.scontainer = []
+  
+  def push(self,data):
+    self.scontainer.append(data)
+  
+  def pop(self):
+    last = self.scontainer[-1]
+    self.scontainer.remove(last)
+    return last
+    
+  def isEmpty(self):
+    return True if self.scontainer == [] else False 
+
+class Queue:
+  s1 = stack()
+  s2 = stack()
+  def enqueue(self, data):
+    self.s1.push(data)
+  
+  def function(self):
+    while (self.s1.isEmpty() == False):
+      self.s2.push(self.s1.pop()) 
+      
+  def dequeue(self):
+    print(self.s2.pop())
+
+line = Queue()
+line.enqueue(1)
+line.enqueue(2)
+line.enqueue(3)
+
+line.function()
+
+line.dequeue() #1
+line.dequeue()#2
+line.dequeue()#3
+
+    
+    
+    
