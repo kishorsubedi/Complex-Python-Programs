@@ -19,5 +19,16 @@ def anagram(word1, word2):
         count +=1 
     return count
     
-print( anagram("amt", "att"))
+def main(list1, list2):
+  zipped = zip(list1,list2) #[("amt", "att"), ("pat", "tap"), ("frog", "gro")]
+  for strings_to_compare in zipped: #i = (amt, att)
+    a = strings_to_compare[0]
+    b = strings_to_compare[1]
+    print(anagram(a,b))
+
+main( ["amt","pat","frog"], ["att","tap","gro"] )
+
+
+
+
 
