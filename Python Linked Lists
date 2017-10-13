@@ -1,0 +1,38 @@
+class Node:
+  def __init__(self, data):
+    self.data = data 
+    self.next = None 
+
+
+class LinkedList:
+  
+  def __init__(self):
+    self.headnode = None 
+    self.curr = None
+
+  def insertnode(self,data):
+    if(self.headnode == None):
+      self.headnode = Node(data)
+    
+    else: #headnode has an object
+      self.curr = self.headnode
+      while (self.curr.next != None):
+        self.curr = self.curr.next
+      self.curr.next = Node(data)
+      
+    
+  def print(self):
+    self.curr = self.headnode
+    while(self.curr):
+      print(self.curr.data)
+      self.curr = self.curr.next 
+    print("ENd of the linked list")
+    
+l1 = LinkedList()
+l1.insertnode(5)
+l1.insertnode(6)
+l1.insertnode(7)
+l1.insertnode(8)
+l1.print()
+
+
