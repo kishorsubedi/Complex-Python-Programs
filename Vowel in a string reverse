@@ -1,0 +1,23 @@
+def function(input_string):
+  vowel= {'a', 'e', 'i', 'o', 'u' }
+  listt = [x for x in input_string ]
+  i = 0
+  j = len(listt)-1 #5
+  while(i< len(listt)//2): #0 1 2 for K I S H O R 
+    if listt[i] in vowel:
+      while (j >= len(listt)//2): #j = 5 4 3 
+        if listt[j] in vowel:
+          hold = listt[i]
+          listt[i] = listt[j]
+          listt[j] = hold 
+          j -= 1 
+          break
+        j -= 1 
+    i += 1 
+  
+  string = ''
+  for i in listt:
+    string += i
+  return string
+
+print( function('aeiou'))
