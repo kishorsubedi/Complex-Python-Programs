@@ -1,0 +1,31 @@
+def binary_search(number):
+  array = [1,5,7,10,15,19,23,27]
+  low = 0 
+  high = len(array) - 1  #7
+  
+  mid = (low+high)//2 #3 array[mid] = 10
+  
+  found = False 
+  while (found == False) :
+    if array[mid] > number:
+      if array[mid-1] < number:
+        found = True 
+        answer = array[mid]
+      else:
+        high = mid 
+        mid = (low+ high) // 2
+      
+    else:
+      if array[mid+1] > number:
+        found = True
+        answer = array[mid+1]
+      else:
+        low = mid 
+        mid = (low+high) // 2
+    
+  return answer
+
+print( binary_search(5))
+      
+      
+    
