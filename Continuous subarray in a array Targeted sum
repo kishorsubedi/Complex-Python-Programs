@@ -1,0 +1,16 @@
+def function(array, summ):
+
+  i = 0
+  while(i < len(array)):
+    index = i #0
+    inside_summ = 0 
+    count = 0
+    while(inside_summ < summ):
+      count +=1 ; #1 2 3
+      inside_summ += array[index+1] #1 2+ 3 
+    if(inside_summ == summ):
+      print(index,count)
+    i+= 1 
+  
+    
+function([1,2,3,7,5], 3)
