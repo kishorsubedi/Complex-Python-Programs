@@ -1,0 +1,14 @@
+def isPalindrome(self,s):
+    s_index = 0 #0
+    l_index = len(s) -1  #1
+    while( s_index < len(s) and l_index >=0 ):
+        while s_index < len(s)-1 and s[s_index].isalnum() == False :
+            s_index += 1 #loop forward
+        while l_index > 0 and s[l_index].isalnum() == False:
+            l_index -=1 #loop
+        if s[s_index].isalnum() == True and s[l_index].isalnum() == True:
+            if s[s_index].lower() != s[l_index].lower():
+                return False
+        s_index += 1 
+        l_index -= 1 
+    return True
