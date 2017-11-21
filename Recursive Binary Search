@@ -1,0 +1,23 @@
+def binary_search(n, req):
+    low = 0
+    high = n
+    
+    mid = (low+high)//2
+    return function(low,high,mid,req) #0 10 5 2 
+    
+
+def function(low, high, mid,req):
+    if mid == req:
+        return mid
+    
+    else:
+        print(mid)
+        if req < mid:
+            high = mid -1 #4
+        else:
+            low = mid + 1 
+        
+        mid = (low + high) // 2 
+        return function(low, high, mid,req)
+
+print(binary_search(100,1))
