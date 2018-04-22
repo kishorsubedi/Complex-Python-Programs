@@ -1,0 +1,27 @@
+class x:
+
+  minimum = 0
+  minimum_index = 0
+  
+  def min_finder(self, array):
+    
+    self.minimum = array[0]
+    i = 0 
+    while( i < len(array)):
+      if array[i] <= self.minimum:
+        self.minimum = array[i]
+        self.minimum_index = i 
+      i += 1 
+  
+  def function(self, array):
+    for i in range(len(array)-1): #0 1 2 3
+    
+      self.min_finder(array[i:])
+      temp = array[i] #5
+      array[i] = self.minimum
+      array[self.minimum_index+i] = temp 
+    
+    return array
+    
+obj = x()
+a = obj.function([5,3,7,9,1])
