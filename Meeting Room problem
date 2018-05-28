@@ -1,16 +1,15 @@
 def check(big_meeting_room, new_room):
     if(new_room[1] <= big_meeting_room[0]):
-        print("FUCK")
         #[20,30,60,70].. [10,14]
         big_meeting_room.insert(0,new_room[1])
         big_meeting_room.insert(0,new_room[0])
-        print(big_meeting_room)
+        #print(big_meeting_room)
         return True
 
     if(new_room[0] >= big_meeting_room[-1]):
         big_meeting_room.append(new_room[0])
         big_meeting_room.append(new_room[1])
-        print(big_meeting_room)
+        #print(big_meeting_room)
         return True 
 
     i = 0
@@ -22,7 +21,7 @@ def check(big_meeting_room, new_room):
     if(new_room[1] <= big_meeting_room[i]):
         big_meeting_room.insert(i,new_room[1])
         big_meeting_room.insert(i,new_room[0])
-        print(big_meeting_room)
+        #print(big_meeting_room)
         return True
 
     return False 
@@ -32,47 +31,44 @@ def check(big_meeting_room, new_room):
 
     #if not, new_meeting is somewhere between
 
-answer = check([20,30,60,70, 80, 90], [70,80])
-print(answer)
-
-
 
 def function(new_rooms_array):
-  meeting_rooms_available = [] #each array inside here is one meeting room
-  meeting_rooms_available.append(new_rooms_array[0])
+    meeting_rooms_available = [] #each array inside here is one meeting room
+    meeting_rooms_available.append(new_rooms_array[0])
 
-  inserted = False
+    inserted = False
 
-  each_new_room_index = 0 
-  while(each_new_room_index < len(new_rooms_array)):
+    each_new_room_index = 0 
+    while(each_new_room_index < len(new_rooms_array)):
 
-    if (each_new_room_index==0):
-      continue
-    else:
-      #loop through the meeting_rooms_available
-      #whenever you find chance, insert it.
-      #at the end, when all are finished and you can't place this new_room array, make a new one 
+        if (each_new_room_index==0):
+            continue
+        else:
+        #loop through the meeting_rooms_available
+        #whenever you find chance, insert it.
+        #at the end, when all are finished and you can't place this new_room array, make a new one 
 
-      each_meeting_room_index = 0
-      while(each_meeting_room_index< len(meeting_rooms_available)):
-          
-        if check(meeting_rooms_available[each_meeting_room_index], new_rooms_array[each_new_room_index]):
-            inserted = True
-            break 
+            each_meeting_room_index = 0
+            while(each_meeting_room_index< len(meeting_rooms_available)):
+                
+                if check(meeting_rooms_available[each_meeting_room_index], new_rooms_array[each_new_room_index]):
+                    inserted = True
+                    break 
 
-        each_meeting_room_index += 1
+                each_meeting_room_index += 1
 
-        #loop where to put new rooms. if found, place and break out the loop.
-      
-      if(inserted == False): #couldnot be placed in any list in meeting_rooms array
-        new_meeting_room = new_rooms_array[each_new_room_index]
-        meeting_rooms_available.append(new_meeting_room)
-      
-      inserted = False 
-      #if reached to the end of meeting_rooms_available and still not inserted, make a new meeting room and append it to meeting_rooms_available
+                #loop where to put new rooms. if found, place and break out the loop.
+            
+            if(inserted == False): #couldnot be placed in any list in meeting_rooms array
+                new_meeting_room = new_rooms_array[each_new_room_index]
+                meeting_rooms_available.append(new_meeting_room)
+            
+            inserted = False 
+            #if reached to the end of meeting_rooms_available and still not inserted, make a new meeting room and append it to meeting_rooms_available
 
-    each_new_room_index += 1
+            each_new_room_index += 1
 
+    return meeting_rooms_available
 
 array = [ [5,10], [42,53], [2,4], [60,90] ]
 function(array)
