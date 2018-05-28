@@ -42,6 +42,7 @@ def function(new_rooms_array):
     while(each_new_room_index < len(new_rooms_array)):
 
         if (each_new_room_index==0):
+            each_new_room_index += 1
             continue
         else:
         #loop through the meeting_rooms_available
@@ -70,5 +71,5 @@ def function(new_rooms_array):
 
     return meeting_rooms_available
 
-array = [ [5,10], [42,53], [2,4], [60,90] ]
-function(array)
+array = [ [5,10], [42,53], [2,4], [10,43] ]
+print(function(array))
