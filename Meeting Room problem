@@ -36,7 +36,7 @@ answer = check([20,30,60,70, 80, 90], [70,80])
 print(answer)
 
 
-'''
+
 def function(new_rooms_array):
   meeting_rooms_available = [] #each array inside here is one meeting room
   meeting_rooms_available.append(new_rooms_array[0])
@@ -56,10 +56,9 @@ def function(new_rooms_array):
       each_meeting_room_index = 0
       while(each_meeting_room_index< len(meeting_rooms_available)):
           
-        if(check(new_rooms_array[each_new_room_index]) == True):
-            #insert
-            #inserted = True 
-            #break 
+        if check(meeting_rooms_available[each_meeting_room_index], new_rooms_array[each_new_room_index]):
+            inserted = True
+            break 
 
         each_meeting_room_index += 1
 
@@ -77,4 +76,3 @@ def function(new_rooms_array):
 
 array = [ [5,10], [42,53], [2,4], [60,90] ]
 function(array)
-'''
