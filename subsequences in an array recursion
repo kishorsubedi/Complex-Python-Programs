@@ -1,0 +1,19 @@
+def function(array):
+  empty = []
+  for i in array:
+    empty.append(0)
+  return nextt(0, empty, array)
+
+def nextt(index, sett, array):
+  if(index == len(array) ):
+    print(sett)
+    return
+  else:
+    sett[index] = 0
+    nextt(index+1, sett, array)
+    sett[index] = array[index]
+    nextt(index+1, sett, array)
+    return 
+
+array = [1,2]
+function(array)
