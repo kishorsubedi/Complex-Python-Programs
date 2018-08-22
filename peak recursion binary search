@@ -1,0 +1,23 @@
+def peak_finding(array):
+  lo = 0
+  hi = len(array) #8
+  mid = (lo + hi)//2 #4
+  return binary_search(lo, hi, mid, array)
+
+def binary_search(low, high, middle, array):
+  if( middle != 0 and middle != len(array)-1):
+    
+    if(array[middle] >= array[middle-1] and array[middle] >= array[middle+1]):
+      return array[middle]
+    else:
+      if( array[middle] < array[middle -1]): #goleft
+        high = middle-1
+      else: #goright
+        low = middle+1
+      middle = (low+high)//2
+      return binary_search(low, high, middle, array)
+  else:
+    return array[0] if middle ==0 else array[high-1]
+
+new_array = [1,5,10,15]
+print(peak_finding(new_array)) #expect 15 to be returned
