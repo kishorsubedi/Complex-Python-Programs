@@ -1,0 +1,48 @@
+def one_edit_away(string1, string2):
+    if abs(len(string1) - len(string2)) > 1:
+        return False
+    error = 0
+    i = 0
+    j = 0
+    while(i < len(string1) and j < len(string2)):
+        if(i == len(string1) or j == len(string2)):
+            if i == len(string1):
+                error += 1
+                j +=1 
+            if j == len(string2):
+                error += 1
+                i +=1
+
+        else:
+            if(string1[i] == string2[j]):
+                i +=1
+                j +=1
+            else:
+                error += 1
+                if(len(string1) == len(string2)):
+                    i += 1
+                    j += 1
+                elif(len(string1) > len(string2)):
+                    i += 1
+                else:
+                    j +=1
+        if(error > 1):
+            return False
+    return True
+
+stringa = 'pale'
+stringb = 'bale'
+
+stringc = 'pale'
+stringd = 'ple'
+
+stringe = 'pls'
+stringf = 'pl'
+
+stringg = 'paas'
+stringh = 'baa'
+
+assert one_edit_away(stringa, stringb) == True
+assert one_edit_away(stringc, stringd) == True
+assert one_edit_away(stringe, stringf) == True
+assert one_edit_away(stringg, stringh) == False
