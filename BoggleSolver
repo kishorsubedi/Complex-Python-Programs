@@ -1,0 +1,87 @@
+def main(grid, word):
+    word_index = 0
+    j = 0
+    while(j < len(grid)):
+        k = 0
+        while(k < len(grid[0])):
+            if(grid[j][k] == word[word_index]):
+                Array = createArray(grid, j, k)
+                if(helper(grid, word, word_index+1, j, k, Array)) == True:
+                    return True 
+            k += 1
+        
+        j += 1
+    return False
+
+def helper(grid, word, word_index, j, k, Array):
+    if(word_index == len(word)):
+        return True
+    else:
+        if( k!= 0 and Array[j][k-1] != 1 and grid[j][k-1] == word[word_index]): #left
+            Array[j][k-1] = 1
+            if helper(grid, word, word_index+1, j, k-1, Array) == True:
+                return True
+        
+        if( k !=len(grid[0])-1 and Array[j][k+1] != 1 and grid[j][k+1] == word[word_index]): #check right
+            Array[j][k+1] = 1
+            if helper(grid, word, word_index+1, j, k+1, Array) == True:
+                return True
+
+        if( j !=0 and Array[j-1][k] != 1 and grid[j-1][k] == word[word_index]): #top
+            Array[j-1][k] = 1
+            if helper(grid, word, word_index+1, j-1, k, Array) == True:
+                return True
+        
+        if( j != len(grid)-1 and Array[j+1][k] != 1 and grid[j+1][k] == word[word_index]): #bottom
+            Array[j+1][k] = 1
+            if helper(grid, word, word_index+1, j+1, k, Array) == True:
+                return True
+
+        if(j != 0 and k !=0 and Array[j-1][k-1] != 1 and grid[j-1][k-1] == word[word_index]):#top left
+            Array[j-1][k-1] = 1
+            if helper(grid, word, word_index+1, j-1, k-1, Array) == True:
+                return True
+
+        if(j !=0 and k != len(grid[0])-1 and Array[j-1][k+1] != 1 and grid[j-1][k+1] == word[word_index]):#top right
+            Array[j-1][k+1] = 1
+            if helper(grid, word, word_index+1, j-1, k+1, Array) == True:
+                return True
+
+        if(j != len(grid)-1 and k != 0 and Array[j+1][k-1] != 1 and grid[j+1][k-1] == word[word_index]):#bottom left 
+            Array[j+1][k-1] = 1
+            if helper(grid, word, word_index+1, j+1, k-1, Array) == True:
+                return True
+
+        if(j != len(grid)-1 and k != len(grid[0])-1 and Array[j+1][k+1] != 1 and grid[j+1][k+1] == word[word_index]):#bottom right 
+            Array[j+1][k+1] = 1
+            if helper(grid, word, word_index+1, j+1, k+1, Array) == True:
+                return True         
+
+        Array[j][k] = 0
+
+def createArray(grid,j, k): #Tested OK
+    array = []
+    m = 0
+    while(m < len(grid)):
+        new_array = []
+        n = 0
+        while(n < len(grid[0])):
+            if(m ==j and n ==k):
+                new_array.append(1)
+            else:
+                new_array.append(0)
+            n += 1
+        array.append(new_array)
+        m += 1
+    return array 
+
+grid = [
+    ['a','b','c','b'],
+    ['t','p','a','p'],
+    ['a','q','s','z'],
+    ['m','p','a','m']
+]
+
+word = "pzaz"
+ans = main(grid, word)
+print(ans)
