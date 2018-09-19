@@ -1,0 +1,14 @@
+def insertion_sort(array):
+    length = len(array)
+    marker = 1
+    while(marker < length): #1, 2, 3, 4
+        swap(marker, array)
+        marker += 1
+    return array
+
+def swap(marker, array): #1, array
+    while(marker >0 and array[marker] < array[marker-1]):
+        temp = array[marker] #-1
+        array[marker] = array[marker-1]
+        array[marker-1] = temp
+        marker -=1 
