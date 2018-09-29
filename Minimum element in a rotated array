@@ -1,0 +1,14 @@
+def function(array): 0(N) implementation
+    length = len(array)
+    i = 0
+    j = 1
+    while(j < len(array)):
+
+        if(array[j] < array[i]):
+            return array[j]
+        i += 1
+        j += 1
+
+
+array = [1,2,3,4,0]
+print(function(array))
