@@ -1,0 +1,18 @@
+def min_in_rotated_sorted_array(array):
+    return helper(array, 0, len(array)-1)
+
+def helper(array, low, high):
+    if(high == low + 1):
+        return min(array[low], array[high])
+
+    mid = (low + high)//2 
+    if( array[mid] > array[low] and array[mid] > array[high]):
+        low = mid 
+    elif( array[mid] < array[low] and array[mid] < array[high]):
+        high = mid 
+    else:
+        return array[0]
+    return helper(array, low, high)
+
+array = [0,1,2,3,4]
+print(min_in_rotated_sorted_array(array))
