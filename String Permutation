@@ -1,0 +1,16 @@
+def Perm(inputt, s):
+    if(len(inputt) == 1):
+        print(s + inputt)
+    else:
+        for i in range(len(inputt)): #0, 1
+            if(i ==0 ):
+                strr = inputt[1:] 
+                Perm(strr, s+ inputt[i]) #Permm(b,a)
+            else:
+                strr = inputt[0:i] + inputt[i+1:]
+                Perm(strr, s+ inputt[i])
+
+input_string = "abcd"
+Perm(input_string, "" ) 
+
+
