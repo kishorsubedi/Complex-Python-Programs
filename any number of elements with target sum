@@ -1,0 +1,23 @@
+class p:
+
+    def possible_sum(self,input_array, target):
+        temp_array = []
+        for i in range(len(input_array)):
+            temp_array.append(0)
+        self.helper(temp_array, input_array, 0, target)
+
+    def helper(self,temp_array, input_array, index, target):
+        if index == len(temp_array):
+            if sum(temp_array) == target:
+                print(temp_array)
+        else:
+            temp_array[index] = 0 
+            self.helper(temp_array, input_array, index+1,target)
+            temp_array[index] = input_array[index]
+            self.helper(temp_array, input_array, index+1, target)
+
+
+P = p()
+target = 8
+array = [2,3,5,6]
+P.possible_sum(array, target)
