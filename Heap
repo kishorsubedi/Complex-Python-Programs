@@ -1,7 +1,3 @@
-class node:
-    count = 0
-    num = 0
-
 class heap:
     array = []
 
@@ -10,49 +6,59 @@ class heap:
         childindex = len(self.array)-1
         parentindex = (childindex - 1)//2
 
-        while(parentindex>=0 and self.array[childindex].count > self.array[parentindex].count ):
+        while(parentindex>=0 and self.array[childindex] > self.array[parentindex] ):
             temp = self.array[parentindex]
             self.array[parentindex] = self.array[childindex]
             self.array[childindex] = temp
             childindex = parentindex
             parentindex = (childindex - 1)//2
-    
+
+
     def takeone(self):
-        returning_num = self.array[0].num
-        self.array[0] = self.array[len(self.array)-1]
-        del self.array[len(self.array)-1]
-        parentindex = 0
-        childindex = (parentindex *2)+1
-        while(childindex < len(self.array) and self.array[childindex].count > self.array[parentindex].count):
-            temp = self.array[parentindex]
-            self.array[parentindex] = self.array[childindex]
-            self.array[childindex] = temp
-            parentindex = childindex
-            childindex = (parentindex *2)+1
-        return returning_num
+            returning_num = self.array[0]
+            self.array[0] = self.array[len(self.array)-1]
+            del self.array[len(self.array)-1]
+            parentindex = 0
 
-class Solution:
-
-    def topKFrequent(self, nums, k):
-        HEAP = heap()
-        dictt = {}
-        for i in nums:
-            if i not in dictt:
-                dictt[i] = 0
+            child1index = (parentindex *2)+1
+            child2index = (parentindex *2)+2
+            if( child1index < len(self.array) and child2index >= len(self.array) ):
+                childindex = child1index
             else:
-                dictt[i] += 1
+                if(child1index < len(self.array) and child2index < len(self.array) and self.array[child1index] > self.array[child2index]):
+                    childindex = child1index
+                else:
+                    childindex = child2index
 
-        for each in dictt:
-            n = node()
-            n.num = each
-            n.count = dictt[each]
-            HEAP.insert(n)
-        
-        a = []
-        for i in range(k):
-            a.append(HEAP.takeone())
-        return a
+            while(childindex < len(self.array) and self.array[childindex]> self.array[parentindex]):
+                temp = self.array[parentindex]
+                self.array[parentindex] = self.array[childindex]
+                self.array[childindex] = temp
+                parentindex = childindex
 
-a = Solution()
-ans = a.topKFrequent([1,2],2)
-print(ans)
+                child1index = (parentindex *2)+1
+                child2index = (parentindex *2)+2
+                if( child1index < len(self.array) and child2index >= len(self.array) ):
+                    childindex = child1index
+                if(child1index < len(self.array) and child2index < len(self.array) and self.array[child1index] > self.array[child2index]):
+                    childindex = child1index
+                else:
+                    childindex = child2index
+
+            return returning_num
+
+
+h = heap()
+h.insert(3)
+h.insert(2)
+h.insert(1)
+h.insert(4)
+h.insert(5)
+h.insert(6)
+
+print(h.array)
+print(h.takeone())
+print(h.takeone())
+print(h.takeone())
+print(h.takeone())
+print(h.takeone())
