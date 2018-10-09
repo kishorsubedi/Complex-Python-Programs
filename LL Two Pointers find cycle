@@ -1,0 +1,16 @@
+def hasCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        if(head == None or head.next == None):
+            return False
+        slowptr = head
+        fastptr = head.next
+        while(fastptr != slowptr):
+            if(fastptr== None or fastptr.next ==None):
+                return False 
+            else:
+                slowptr = slowptr.next
+                fastptr = fastptr.next.next
+        return True 
