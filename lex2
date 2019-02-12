@@ -67,7 +67,7 @@ def putinqueue(q, qset, inst_index):
         q.EnQueue(inst_index)
     return q 
 
-def method(instruction_array, input_text, char_index):
+def method(instruction_array, input_text, char_index, pc_tc_match):
     match = False
     max_index = char_index
     max_match_pc = 0
@@ -99,7 +99,8 @@ def method(instruction_array, input_text, char_index):
                     max_match_pc = pc
                     match = True
                 if(char_index == len(input_text)):
-                    print("Match at PC", max_match_pc, "for tc until(exclusive)", max_index)
+                    #print("Match at PC", max_match_pc, "for tc until(exclusive)", max_index)
+                    pc_tc_match.append([max_match_pc, max_index])
                     return max_index
             else:
                 putinqueue(clist, clistset, int(instruction[2]))
@@ -114,22 +115,33 @@ def method(instruction_array, input_text, char_index):
     if(match == False):
         return 0 
     else:
-        print("Match at PC", max_match_pc, "for tc until(exclusive)", max_index)
+        #print("Match at PC", max_match_pc, "for tc until(exclusive)", max_index)
+        pc_tc_match.append([max_match_pc, max_index])
         return max_index
     
+def showformattedoutput(input_text, PC_TC_MATCH):
+    indx = 0
+    for each in PC_TC_MATCH:
+        print(each[0], ": ", input_text[indx:each[1]] )
+        indx = each[1]
+
 #def thompsonvm(input_text, nfa_instruction_filepath):
 def thompsonvm(input_text, instruction_array):
     #instruction_array = file_path_to_inst_array(nfa_instruction_filepath)
     main_matches = []
+    PC_INDEX_MATCH = []
 
     char_index = 0
     while(char_index < len(input_text)):
-        returned = method(instruction_array, input_text, char_index)#2
+        
+        returned = method(instruction_array, input_text, char_index, PC_INDEX_MATCH)#2
         if(returned == 0):
             return 0
         char_index = returned#2
-
+    showformattedoutput(input_text, PC_INDEX_MATCH)
+   
+    
 a = ['0 SPLIT 1 3', '1 CHAR 97 97', '2 MATCH', '3 SPLIT 4 9', '4 CHAR 97 97', '5 SPLIT 6 8', '6 CHAR 97 97', '7 JMP 5', '8 MATCH', '9 SPLIT 10 12', '10 CHAR 32 32', '11 JMP 16', '12 SPLIT 13 15', '13 CHAR 9 9', '14 JMP 16', '15 CHAR 10 10', '16 SPLIT 17 25', '17 SPLIT 18 20', '18 CHAR 32 32', '19 JMP 24', '20 SPLIT 21 23', '21 CHAR 9 9', '22 JMP 24', '23 CHAR 10 10', '24 JMP 16', '25 MATCH']
 
-print(thompsonvm("a aa a aaaa a aaaa a", a ))#if match at end of the string, string index out of range
+thompsonvm("a aa a aaaa a aaaa a", a )#if match at end of the string, string index out of range
 #
