@@ -129,9 +129,9 @@ def showformattedoutput(input_text, PC_TC_MATCH):
         print('{}:"{}"'.format(each[0], input_text[indx:each[1]]) )
         indx = each[1]
 
-#def thompsonvm(input_text, nfa_instruction_filepath):
-def thompsonvm(input_text, instruction_array):
-    #instruction_array = file_path_to_inst_array(nfa_instruction_filepath)
+def thompsonvm(input_text, nfa_instruction_filepath):
+#def thompsonvm(input_text, instruction_array):
+    instruction_array = file_path_to_inst_array(nfa_instruction_filepath)
     #return instruction_array
     main_matches = []
     PC_INDEX_MATCH = []
@@ -145,6 +145,6 @@ def thompsonvm(input_text, instruction_array):
         char_index = returned#2
     showformattedoutput(input_text, PC_INDEX_MATCH)
    
-a = ['0 SPLIT 1 4', '1 CHAR 97 97', '2 CHAR 97 97', '3 MATCH', '4 SPLIT 5 10', '5 CHAR 97 97', '6 SPLIT 7 9', '7 CHAR 97 97', '8 JMP 6', '9 MATCH', '10 SPLIT 11 13', '11 CHAR 32 32', '12 JMP 17', '13 SPLIT 14 16', '14 CHAR 9 9','15 JMP 17', '16 CHAR 10 10', '17 SPLIT 18 26', '18 SPLIT 19 21', '19 CHAR 32 32', '20 JMP 25', '21 SPLIT 22 24', '22 CHAR 9 9', '23 JMP 25', '24 CHAR 10 10', '25 JMP 17', '26 MATCH', '']
-thompsonvm("aaa", a )#if match at end of the string, string index out of range
+
+thompsonvm("aaa", "inputnfa.txt" )#if match at end of the string, string index out of range
 #
