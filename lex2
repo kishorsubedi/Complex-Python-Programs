@@ -127,7 +127,10 @@ def method(instruction_array, input_text, char_index, pc_tc_match):
 def showformattedoutput(input_text, PC_TC_MATCH):
     indx = 0
     for each in PC_TC_MATCH:
-        print('{}:"{}"'.format(each[0], input_text[indx:each[1]]) )
+        if(input_text[indx:each[1]] == '\n'):
+            print('{}:"{}"'.format(each[0], '\\n') )
+        else:   
+            print('{}:"{}"'.format(each[0], input_text[indx:each[1]]) )
         indx = each[1]
 
 #def thompsonvm(input_text, nfa_instruction_file):
