@@ -90,7 +90,7 @@ def method(instruction_array, input_text, char_index, pc_tc_match):
                 if(char_index == len(input_text)):
                     continue
                 for i in range(int(instruction[2]) , int(instruction[3])+1 ):
-                    if(int(instruction[2]) == ord(input_text[char_index]) ):
+                    if(i == ord(input_text[char_index]) ):
                         putinqueue(nlist, nlistset, pc+1)
                         break
 
@@ -129,9 +129,10 @@ def showformattedoutput(input_text, PC_TC_MATCH):
         print('{}:"{}"'.format(each[0], input_text[indx:each[1]]) )
         indx = each[1]
 
-def thompsonvm(input_text, nfa_instruction_filepath):
-#def thompsonvm(input_text, instruction_array):
-    instruction_array = file_path_to_inst_array(nfa_instruction_filepath)
+#def thompsonvm(input_text, nfa_instruction_filepath):
+def thompsonvm(input_text, instruction_array):
+    #instruction_array = file_path_to_inst_array(nfa_instruction_filepath)
+    #return instruction_array
     #return instruction_array
     main_matches = []
     PC_INDEX_MATCH = []
@@ -145,6 +146,5 @@ def thompsonvm(input_text, nfa_instruction_filepath):
         char_index = returned#2
     showformattedoutput(input_text, PC_INDEX_MATCH)
    
-
-thompsonvm("aaa", "inputnfa.txt" )#if match at end of the string, string index out of range
-#
+a = ['0 SPLIT 1 9', '1 CHAR 107 107', '2 CHAR 101 101', '3 CHAR 121 121', '4 CHAR 119 119', '5 CHAR 111 111', '6 CHAR 114 114', '7 CHAR 100 100', '8 MATCH', '9 SPLIT 10 27', '10 SPLIT 11 13', '11 CHAR 97 122', '12 JMP 17', '13 SPLIT 14 16', '14 CHAR 65 90', '15 JMP 17', '16 CHAR 95 95', '17 SPLIT 18 26', '18 SPLIT 19 21', '19 CHAR 97 122', '20 JMP 25', '21 SPLIT 22 24', '22 CHAR 65 90', '23 JMP 25', '24 CHAR 95 95', '25 JMP 17', '26 MATCH', '27 SPLIT 28 52', '28 SPLIT 29 31', '29 CHAR 48 57', '30 JMP 28', '31 SPLIT 32 33', '32 CHAR 46 46', '33 CHAR 48 57', '34 SPLIT 35 37', '35 CHAR 48 57', '36 JMP34', '37 SPLIT 38 51', '38 SPLIT 39 41', '39 CHAR 69 69', '40 JMP 42', '41 CHAR 101 101', '42 SPLIT 43 47', '43 SPLIT 44 46', '44 CHAR 43 43', '45 JMP 47', '46 CHAR 45 45', '47 CHAR 48 57', '48 SPLIT 49 51', '49 CHAR 48 57', '50 JMP 48', '51 MATCH', '52 SPLIT 53 55', '53 CHAR 32 32', '54 JMP 59', '55 SPLIT 56 58', '56 CHAR 9 9', '57 JMP 59','58 CHAR 10 10', '59 SPLIT 60 68', '60 SPLIT 61 63', '61 CHAR 32 32', '62 JMP 67', '63 SPLIT 64 66', '64 CHAR 9 9', '65 JMP 67', '66 CHAR 10 10', '67 JMP 59', '68 MATCH']
+print(thompsonvm("n123 123 124.e5 .0e5 .e5 0.e535.", a))
