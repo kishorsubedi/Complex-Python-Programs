@@ -98,7 +98,6 @@ def method(instruction_array, input_text, char_index, pc_tc_match):
                 putinqueue(clist, clistset, instruction[2])
 
             elif(inst_opcode == "MATCH"):
-                    
                 if(char_index > max_index):
                     max_index = char_index
                     max_match_pc = pc
@@ -109,10 +108,6 @@ def method(instruction_array, input_text, char_index, pc_tc_match):
                         max_match_pc = pc
                         match = True
                         
-                if(char_index == len(input_text)):
-                    #print("Match at PC", max_match_pc, "for tc until(exclusive)", max_index)
-                    pc_tc_match.append([max_match_pc, max_index])
-                    return max_index
             else:
                 putinqueue(clist, clistset, int(instruction[2]))
                 putinqueue(clist, clistset, int(instruction[3]))
@@ -139,18 +134,16 @@ def showformattedoutput(input_text, PC_TC_MATCH):
 def thompsonvm(input_text, instruction_array):
     #instruction_array = file_path_to_inst_array(nfa_instruction_file)
     #return instruction_array
-    main_matches = []
     PC_INDEX_MATCH = []
 
     char_index = 0
     while(char_index < len(input_text)):
-        
         returned = method(instruction_array, input_text, char_index, PC_INDEX_MATCH)#2
         if(returned == 0):
             return 1
         char_index = returned#2
     showformattedoutput(input_text, PC_INDEX_MATCH)
     return 0
-   
-a = ['0 SPLIT 1 6', '1 CHAR 97 97', '2 SPLIT 3 5', '3 CHAR 97 97', '4 JMP 2', '5 MATCH', '6 SPLIT 7 9', '7 CHAR 97 97', '8 MATCH', '9 SPLIT 10 12', '10 CHAR 32 32', '11 JMP 16', '12 SPLIT 13 15', '13 CHAR 9 9', '14 JMP 16', '15 CHAR 10 10', '16 SPLIT 17 25', '17 SPLIT 18 20', '18 CHAR 32 32', '19 JMP 24', '20 SPLIT 21 23', '21 CHAR 9 9', '22 JMP 24', '23 CHAR 10 10', '24 JMP 16', '25 MATCH']
-print(thompsonvm("a aa a aaaa a aaaa a", a))
+
+a = ['0 SPLIT 1 6', '1 CHAR 97 97', '2 SPLIT 3 5', '3 CHAR 97 97', '4 JMP 2', '5 MATCH', '6 SPLIT 7 9', '7 CHAR 97 97', '8 MATCH', '9 SPLIT 10 12', '10 CHAR 32 32', '11 JMP 16', '12 SPLIT 13 15', '13 CHAR 9 9', '14 JMP 16', '15 CHAR 10 10','16 SPLIT 17 25', '17 SPLIT 18 20', '18 CHAR 32 32', '19 JMP 24', '20 SPLIT 21 23', '21 CHAR 9 9', '22 JMP 24', '23 CHAR 10 10', '24 JMP 16', '25 MATCH']
+ans = thompsonvm("a aa a aaaa a aaaa a", a)
