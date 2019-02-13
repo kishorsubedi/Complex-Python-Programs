@@ -98,10 +98,17 @@ def method(instruction_array, input_text, char_index, pc_tc_match):
                 putinqueue(clist, clistset, instruction[2])
 
             elif(inst_opcode == "MATCH"):
+                    
                 if(char_index > max_index):
                     max_index = char_index
                     max_match_pc = pc
                     match = True
+                else:
+                    if(pc < max_match_pc):
+                        max_index = char_index
+                        max_match_pc = pc
+                        match = True
+                        
                 if(char_index == len(input_text)):
                     #print("Match at PC", max_match_pc, "for tc until(exclusive)", max_index)
                     pc_tc_match.append([max_match_pc, max_index])
