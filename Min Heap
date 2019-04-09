@@ -31,8 +31,9 @@ class minHeap:
         if(len(self.heap) == 0):
             return "Error extracting from empty heap"
         elif(len(self.heap) == 1):
+            firstelem = self.heap[0]
             del self.heap[0]
-            return 
+            return firstelem
         min_element = self.heap[0]
         last_elem_index = len(self.heap) -1 #1, 2...
         self.heap[0] = self.heap[last_elem_index]
